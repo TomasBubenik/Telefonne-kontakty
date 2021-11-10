@@ -1,0 +1,40 @@
+import json
+f = open("kontakty.json","r")
+datas = f.read()
+data = json.loads(datas)
+f.close()
+
+a = "A"
+
+while True:
+    print("A = Vytovriť nový kontakt")
+    print("E = Zmeniť informacie")
+    print("Z = Zmazanie kontaktu")
+    print(data)
+
+    a = input("Chcete pokračovať alebo Zmeniť akciu?:")
+
+    if a == "E" or a =="e":
+        mmeno = input("Zadajte meno osoby ktorej informacie chcete zmeniť:")         
+        čislo = input("Zadajte číslo:")
+        bydlisko = input("Zadajte bydlisko:")    
+        data[mmeno]={"Čislo":čislo,"Bydlisko":bydlisko}
+    elif a == "A" or a == "a":
+        meno = input("Zadajte meno:")
+        čislo = input("Zadajte číslo:")
+        bydlisko = input("Zadajte bydlisko:")
+        data[meno]={"Čislo":čislo,"Bydlisko":bydlisko}
+    elif a =="Z" or a == "z":
+        mmmeno = input("Zadajte meno osoby ktoru chcete odstraniť:")
+        del data[mmmeno]
+    
+    
+    
+    
+    
+    else:
+        f = open("kontakty.json","w")
+        f.write(json.dumps(data))
+        f.close()
+        break
+    
